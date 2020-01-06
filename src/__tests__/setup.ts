@@ -86,7 +86,17 @@ sampleFeed.addItem({
   ],
   date: updated,
   image: "https://example.com/hello-world.jpg",
-  published
+  published,
+  extra: {
+    "media:content": {
+      _attributes: {
+        url: "https://v3spec.msn.com/image1.jpg",
+        type: "image/jpeg",
+        medium: "image"
+      },
+      _text: "Joe Gargery/Fabrikam Images"
+    }
+  }
 });
 
 sampleFeed.addExtension({
@@ -96,3 +106,25 @@ sampleFeed.addExtension({
     dummy: "example"
   }
 });
+
+sampleFeed.namespaces = {
+  "xmlns:dcterms": "https://purl.org/dc/terms/",
+  "xmlns:media": "https://search.yahoo.com/mrss/"
+};
+
+sampleFeed.extra = {
+  "media:content": {
+    _attributes: {
+      url: "https://www.foo.com/movie.mov",
+      type: "video/quicktime"
+    },
+    "media:credit": {
+      _attributes: { role: "producer" },
+      _text: "producer's name"
+    },
+    "media:category": {
+      _attributes: { scheme: "https://blah.com/scheme" },
+      _text: "music/artistname/album/song"
+    }
+  }
+};

@@ -1,3 +1,5 @@
+import * as convert from "xml-js";
+
 export interface Item {
   title: string;
   id?: string;
@@ -19,6 +21,7 @@ export interface Item {
   copyright?: string;
 
   extensions?: Extension[];
+  extra?: { [key: string]: convert.ElementCompact };
 }
 
 export interface Author {

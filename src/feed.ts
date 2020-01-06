@@ -1,6 +1,7 @@
 import renderAtom from "./atom1";
 import renderJSON from "./json";
 import renderRSS from "./rss2";
+import * as convert from "xml-js";
 import { FeedOptions, Item, Author, Extension } from "./typings";
 
 export class Feed {
@@ -8,6 +9,8 @@ export class Feed {
   items: Item[] = [];
   categories: string[] = [];
   contributors: Author[] = [];
+  namespaces: { [key: string]: string } = {};
+  extra: { [key: string]: convert.ElementCompact } = {};
   extensions: Extension[] = [];
 
   constructor(options: FeedOptions) {

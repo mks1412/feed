@@ -11,7 +11,7 @@ export default (ins: Feed) => {
   const base: any = {
     _declaration: { _attributes: { version: "1.0", encoding: "utf-8" } },
     rss: {
-      _attributes: { version: "2.0" },
+      _attributes: { version: "2.0", ...ins.namespaces },
       channel: {
         title: { _text: options.title },
         link: { _text: options.link },
@@ -97,8 +97,14 @@ export default (ins: Feed) => {
     };
   }
 
+  if (ins.extra) {
+    Object.keys(ins.extra).forEach(key => {
+      base.rss.channel[key] = ins.extra[key]
+    })
+  }
+
   /**
-   * Channel Categories
+   * Channel Items
    * https://validator.w3.org/feed/docs/rss2.html#hrelementsOfLtitemgt
    */
   base.rss.channel.item = [];
@@ -159,6 +165,13 @@ export default (ins: Feed) => {
 
     if (entry.image) {
       item.enclosure = { _attributes: { url: entry.image } };
+    }
+
+    if (entry.extra) {
+      Object.keys(entry.extra).forEach(key => {
+        if (!entry.extra) return
+        item[key] = entry.extra[key]
+      })
     }
 
     base.rss.channel.item.push(item);

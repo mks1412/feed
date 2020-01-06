@@ -9,7 +9,7 @@ export default (ins: Feed) => {
   const base: any = {
     _declaration: { _attributes: { version: "1.0", encoding: "utf-8" } },
     feed: {
-      _attributes: { xmlns: "http://www.w3.org/2005/Atom" },
+      _attributes: { xmlns: "http://www.w3.org/2005/Atom", ...ins.namespaces },
       id: options.id,
       title: options.title,
       updated: options.updated ? options.updated.toISOString() : new Date().toISOString(),
@@ -155,8 +155,22 @@ export default (ins: Feed) => {
       entry.rights = item.copyright;
     }
 
+    // extra
+    if (item.extra) {
+      Object.keys(item.extra).forEach(key => {
+        if (!item.extra) return
+        entry[key] = item.extra[key]
+      })
+    }
+
     base.feed.entry.push(entry);
   });
+
+  if (ins.extra) {
+    Object.keys(ins.extra).forEach(key => {
+      base.feed[key] = ins.extra[key]
+    })
+  }
 
   return convert.js2xml(base, { compact: true, ignoreComment: true, spaces: 4 });
 };
