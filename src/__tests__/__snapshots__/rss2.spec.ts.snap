@@ -36,6 +36,8 @@ exports[`rss 2.0 should generate a valid feed 1`] = `
             <category domain=\\"http://www.fool.com/cusips\\">MSFT</category>
             <enclosure url=\\"https://example.com/hello-world.jpg\\"/>
             <media:content url=\\"https://v3spec.msn.com/image1.jpg\\" type=\\"image/jpeg\\" medium=\\"image\\">Joe Gargery/Fabrikam Images</media:content>
+            <item>item1</item>
+            <item>item2</item>
         </item>
     </channel>
 </rss>"

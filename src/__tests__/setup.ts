@@ -95,8 +95,17 @@ sampleFeed.addItem({
         medium: "image"
       },
       _text: "Joe Gargery/Fabrikam Images"
-    }
+    },
+    "item": [
+      {
+        _text: "item1"
+      },
+      {
+        _text: "item2"
+      }
+    ]
   }
+
 });
 
 sampleFeed.addExtension({

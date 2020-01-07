@@ -54,6 +54,8 @@ exports[`atom 1.0 should generate a valid feed 1`] = `
         </contributor>
         <published>2013-07-10T23:00:00.000Z</published>
         <media:content url=\\"https://v3spec.msn.com/image1.jpg\\" type=\\"image/jpeg\\" medium=\\"image\\">Joe Gargery/Fabrikam Images</media:content>
+        <item>item1</item>
+        <item>item2</item>
     </entry>
     <media:content url=\\"https://www.foo.com/movie.mov\\" type=\\"video/quicktime\\">
         <media:credit role=\\"producer\\">producer's name</media:credit>

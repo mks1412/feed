@@ -21,7 +21,7 @@ export interface Item {
   copyright?: string;
 
   extensions?: Extension[];
-  extra?: { [key: string]: convert.ElementCompact };
+  extra?: { [key: string]: convert.ElementCompact | convert.ElementCompact[] };
 }
 
 export interface Author {

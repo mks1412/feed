@@ -10,7 +10,7 @@ export class Feed {
   categories: string[] = [];
   contributors: Author[] = [];
   namespaces: { [key: string]: string } = {};
-  extra: { [key: string]: convert.ElementCompact } = {};
+  extra: { [key: string]: convert.ElementCompact | convert.ElementCompact[] } = {};
   extensions: Extension[] = [];
 
   constructor(options: FeedOptions) {
