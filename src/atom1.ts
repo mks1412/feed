@@ -12,7 +12,7 @@ export default (ins: Feed) => {
       _attributes: { xmlns: "http://www.w3.org/2005/Atom", ...ins.namespaces },
       id: options.id,
       title: options.title,
-      updated: options.updated ? options.updated.toISOString() : new Date().toISOString(),
+      updated: options.updated ? options.updated : new Date().toISOString(),
       generator: options.generator || generator
     }
   };
@@ -158,9 +158,9 @@ export default (ins: Feed) => {
     // extra
     if (item.extra) {
       Object.keys(item.extra).forEach(key => {
-        if (!item.extra) return
-        entry[key] = item.extra[key]
-      })
+        if (!item.extra) return;
+        entry[key] = item.extra[key];
+      });
     }
 
     base.feed.entry.push(entry);
@@ -168,8 +168,8 @@ export default (ins: Feed) => {
 
   if (ins.extra) {
     Object.keys(ins.extra).forEach(key => {
-      base.feed[key] = ins.extra[key]
-    })
+      base.feed[key] = ins.extra[key];
+    });
   }
 
   return convert.js2xml(base, { compact: true, ignoreComment: true, spaces: 4 });

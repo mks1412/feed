@@ -16,7 +16,7 @@ export default (ins: Feed) => {
         title: { _text: options.title },
         link: { _text: options.link },
         description: { _text: options.description },
-        lastBuildDate: { _text: options.updated ? options.updated.toUTCString() : new Date().toUTCString() }
+        lastBuildDate: { _text: options.updated ? options.updated : new Date().toUTCString() }
       }
     }
   };

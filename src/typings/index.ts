@@ -40,7 +40,7 @@ export interface Category {
 export interface FeedOptions {
   id: string;
   title: string;
-  updated?: Date;
+  updated?: Date | string;
   generator?: string;
   language?: string;
 
