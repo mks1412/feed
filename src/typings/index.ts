@@ -55,6 +55,9 @@ export interface FeedOptions {
   image?: string;
   favicon?: string;
   copyright: string;
+
+  disableGenerator?: boolean;
+  disableDocs?: boolean;
 }
 
 export interface Extension {

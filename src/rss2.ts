@@ -16,12 +16,18 @@ export default (ins: Feed) => {
         title: { _text: options.title },
         link: { _text: options.link },
         description: { _text: options.description },
-        lastBuildDate: { _text: options.updated ? options.updated.toUTCString() : new Date().toUTCString() },
-        docs: { _text: options.docs ? options.docs : "https://validator.w3.org/feed/docs/rss2.html" },
-        generator: { _text: options.generator || generator }
+        lastBuildDate: { _text: options.updated ? options.updated.toUTCString() : new Date().toUTCString() }
       }
     }
   };
+
+  if (!options.disableGenerator) {
+    base.rss.channel.generator = { _text: options.generator || generator };
+  }
+
+  if (!options.disableDocs) {
+    base.rss.channel.docs = { _text: options.docs ? options.docs : "https://validator.w3.org/feed/docs/rss2.html" };
+  }
 
   /**
    * Channel language
@@ -99,8 +105,8 @@ export default (ins: Feed) => {
 
   if (ins.extra) {
     Object.keys(ins.extra).forEach(key => {
-      base.rss.channel[key] = ins.extra[key]
-    })
+      base.rss.channel[key] = ins.extra[key];
+    });
   }
 
   /**
@@ -169,9 +175,9 @@ export default (ins: Feed) => {
 
     if (entry.extra) {
       Object.keys(entry.extra).forEach(key => {
-        if (!entry.extra) return
-        item[key] = entry.extra[key]
-      })
+        if (!entry.extra) return;
+        item[key] = entry.extra[key];
+      });
     }
 
     base.rss.channel.item.push(item);
@@ -196,4 +202,3 @@ const formatCategory = (category: Category) => {
     }
   };
 };
-
